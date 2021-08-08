@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const ConceptosBasicos = () => {
 	return (
-		<div>
+		<>
 			<h2>Conceptos basicos</h2>
 			<Router>
 				<Switch>
@@ -13,6 +13,9 @@ const ConceptosBasicos = () => {
 					<Route exact path="/contacto">
 						<h3>Contacto</h3>
 					</Route>
+					<Route exact path="/informacion">
+						<h3>Informacion</h3>
+					</Route>
 					<Route exact path="/">
 						<h3>Home</h3>
 						<p>Bienvenidos a el tema de las Rutas en React</p>
@@ -20,7 +23,7 @@ const ConceptosBasicos = () => {
 					</Route>
 				</Switch>
 			</Router>
-		</div>
+		</>
 	);
 };
 
