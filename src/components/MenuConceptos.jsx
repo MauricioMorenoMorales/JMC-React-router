@@ -30,6 +30,15 @@ const MenuConceptos = () => {
 						Contacto
 					</NavLink>
 				</li>
+				<li>
+					<span>Parametros en urls</span>
+					<NavLink exact to="/usuario/jonmircha/30" activeClassName="active">
+						Perfil jonmircha
+					</NavLink>
+					<NavLink exact to="/usuario/mauricio/12" activeClassName="active">
+						Perfil mauricio
+					</NavLink>
+				</li>
 			</ol>
 		</nav>
 	);
