@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Acerca from '../pages/Acerca';
 import Contacto from '../pages/Contacto';
+import Error404 from './Error404';
+import Home from './Home';
 
-const ConceptosBasicos = () => {
+export const PrimeraExplicacion = () => {
 	return (
 		<>
 			<h2>Conceptos basicos</h2>
@@ -15,7 +17,7 @@ const ConceptosBasicos = () => {
 						<Acerca />
 					</Route>
 					{/* Dos formas de declarar renderizado de un componente en una linea */}
-					{/* <Route exact path="/contacto" component={Contacto} /> */}
+					<Route exact path="/contacto" component={Contacto} />
 					<Route
 						exact
 						path="/contacto"
@@ -39,6 +41,23 @@ const ConceptosBasicos = () => {
 						<p>Bienvenidos a el tema de las Rutas en React</p>
 						<p>Actualmente te encuentras viendo la sección de contacto</p>
 					</Route>
+				</Switch>
+			</Router>
+		</>
+	);
+};
+
+const ConceptosBasicos = () => {
+	return (
+		<>
+			<h2>Conceptos basicos</h2>
+			<Router>
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route exact path="/acerca" component={Acerca} />
+					<Route exact path="/contacto" component={Contacto} />
+					{/* Tiene que estar siempre al final */}
+					<Route path="*" component={Error404} />
 				</Switch>
 			</Router>
 		</>
