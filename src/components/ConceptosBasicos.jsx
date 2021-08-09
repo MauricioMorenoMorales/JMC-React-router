@@ -4,6 +4,7 @@ import Acerca from '../pages/Acerca';
 import Contacto from '../pages/Contacto';
 import Error404 from './Error404';
 import Home from './Home';
+import MenuConceptos from './MenuConceptos';
 
 export const PrimeraExplicacion = () => {
 	return (
@@ -52,6 +53,7 @@ const ConceptosBasicos = () => {
 		<>
 			<h2>Conceptos basicos</h2>
 			<Router>
+				<MenuConceptos />
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route exact path="/acerca" component={Acerca} />
