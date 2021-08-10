@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Acerca from '../pages/Acerca';
 import Contacto from '../pages/Contacto';
+import Productos from '../pages/Productos';
 import Usuario from '../pages/Usuario';
 import Error404 from './Error404';
 import Home from './Home';
@@ -60,6 +61,7 @@ const ConceptosBasicos = () => {
 					<Route exact path="/acerca" component={Acerca} />
 					<Route exact path="/contacto" component={Contacto} />
 					<Route exact path="/usuario/:username/:age" component={Usuario} />
+					<Route exact path="/productos" component={Productos} />
 					{/* Tiene que estar siempre al final */}
 					<Route path="*" component={Error404} />
 				</Switch>

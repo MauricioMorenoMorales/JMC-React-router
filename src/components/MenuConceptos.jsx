@@ -39,6 +39,10 @@ const MenuConceptos = () => {
 						Perfil mauricio
 					</NavLink>
 				</li>
+				<li>
+					<span>Parámetros de consulta:</span>
+					<Link to="/productos">Productos</Link>
+				</li>
 			</ol>
 		</nav>
 	);
