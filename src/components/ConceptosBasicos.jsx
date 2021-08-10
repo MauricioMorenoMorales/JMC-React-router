@@ -14,6 +14,7 @@ import Home from './Home';
 import MenuConceptos from './MenuConceptos';
 
 export const PrimeraExplicacion = () => {
+	console.log('.');
 	return (
 		<>
 			<h2>Conceptos basicos</h2>
