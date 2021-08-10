@@ -8,6 +8,7 @@ import {
 import Acerca from '../pages/Acerca';
 import Contacto from '../pages/Contacto';
 import Productos from '../pages/Productos';
+import ReactTopics from '../pages/ReactTopics';
 import Usuario from '../pages/Usuario';
 import Error404 from './Error404';
 import Home from './Home';
@@ -67,6 +68,8 @@ const ConceptosBasicos = () => {
 					<Route exact path="/contacto" component={Contacto} />
 					<Route exact path="/usuario/:username/:age" component={Usuario} />
 					<Route exact path="/productos" component={Productos} />
+					{/* cuando una ruta tenga rutas anidadas no uses el "exact" */}
+					<Route path="/react" component={ReactTopics} />
 					<Route exact path="/about">
 						<Redirect to="/" />
 					</Route>
