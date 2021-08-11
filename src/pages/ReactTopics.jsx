@@ -54,6 +54,7 @@ const ReactTopics = () => {
 				{/* en un path variable no puedes usar exact */}
 				<Route path={`${path}/:topic`} component={Topic} />
 			</Switch>
+			<route>probando como se escribe usando esta wea jaja</route>
 		</div>
 	);
 };
