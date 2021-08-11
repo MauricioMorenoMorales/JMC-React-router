@@ -1,6 +1,8 @@
 import React from 'react';
 import {
 	BrowserRouter as Router,
+	HashRouter,
+	Link,
 	Redirect,
 	Route,
 	Switch,
@@ -62,6 +64,30 @@ export const PrimeraExplicacion = () => {
 const ConceptosBasicos = () => {
 	return (
 		<>
+			<h2>Hash Router</h2>
+			<HashRouter>
+				<MenuConceptos />
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route exact path="/acerca" component={Acerca} />
+					<Route exact path="/contacto" component={Contacto} />
+					<Route exact path="/usuario/:username/:age" component={Usuario} />
+					<Route exact path="/productos" component={Productos} />
+					{/* cuando una ruta tenga rutas anidadas no uses el "exact" */}
+					<Route path="/react" component={ReactTopics} />
+					<Route exact path="/about">
+						<Redirect to="/" />
+					</Route>
+					<Route exact path="/contact">
+						<Redirect to="/" />
+					</Route>
+					<Route exact path="/login" component={Login} />
+					<PrivateRoute exact path="/dashboard" component={Dashboard} />
+					{/* Tiene que estar siempre al final */}
+					<Route path="*" component={Error404} />
+				</Switch>
+			</HashRouter>
+			<hr />
 			<h2>Conceptos basicos</h2>
 			<Router>
 				<MenuConceptos />
