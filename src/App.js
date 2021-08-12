@@ -15,8 +15,10 @@ function App() {
 			>
 				Documentación
 			</a>
+			<SongSearch />
 			<hr />
 			<CrudApi />
+			<hr />
 			<ConceptosBasicos />
 		</div>
 	);
