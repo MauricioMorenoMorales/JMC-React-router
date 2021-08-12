@@ -16,8 +16,6 @@ function App() {
 				Documentación
 			</a>
 			<hr />
-			<SongSearch />
-			<hr />
 			<CrudApi />
 			<ConceptosBasicos />
 		</div>

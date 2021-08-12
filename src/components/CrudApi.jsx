@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { HashRouter, NavLink, Route, Switch } from 'react-router-dom';
 import { helpHttp } from '../helpers/helpHttp';
 
 import CrudForm from './CrudForm';
 import CrudTable from './CrudTable';
+import Error404 from './Error404';
 import Loader from './Loader';
 import Message from './Message';
 
@@ -94,10 +96,34 @@ const CrudApi = () => {
 
 	return (
 		<div>
+			<HashRouter basename="santos">
+				<header>
+					<h2>CRUD API con Rutas</h2>
+					<nav>
+						<NavLink to="/" activeClassName="active">
+							Santos
+						</NavLink>
+						<NavLink to="/agregar" activeClassName="active">
+							Agregar
+						</NavLink>
+					</nav>
+				</header>
+				<Switch>
+					<Route exact path="/">
+						<h2>Home de santos</h2>
+					</Route>
+					<Route exact path="/agregar">
+						<h2>Agregar Santos</h2>
+					</Route>
+					<Route exact path="/editar/:id">
+						<h2>Editar santos</h2>
+					</Route>
+					<Route path="*" children={Error404} />
+				</Switch>
+			</HashRouter>
 			<br />
 			<h2>CRUD API</h2>
 			<article className="grid-1-2">
-				<h3>{dataToEdit ? 'Editar' : 'Agregar'}</h3>
 				{/* The crud form create and update the data */}
 				<CrudForm
 					createData={createData}
