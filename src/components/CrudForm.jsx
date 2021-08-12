@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 
 const initialForm = {
 	name: '',
@@ -9,6 +10,7 @@ const initialForm = {
 const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
 	const [form, setForm] = useState(initialForm); //This data fills the form state
 	//Fills the form with the information to edit when setData to edit is changed on <CrudTable />
+	const history = useHistory();
 	useEffect(() => {
 		if (dataToEdit) {
 			setForm(dataToEdit);
@@ -41,6 +43,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
 	const handleReset = () => {
 		setForm(initialForm);
 		setDataToEdit(null);
+		history.push('/');
 	};
 
 	return (

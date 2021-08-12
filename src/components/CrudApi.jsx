@@ -111,12 +111,41 @@ const CrudApi = () => {
 				<Switch>
 					<Route exact path="/">
 						<h2>Home de santos</h2>
+
+						{loading && <Loader />}
+						{error && (
+							<Message
+								message={`Error ${error.status}: ${error.statusText}`}
+								backgroundColor="#dc3545"
+							/>
+						)}
+						{/* CrudApi default function is get the data and store it in the component Crudtable */}
+						{/* When they click on a button inside this component they call the two functions bellow  with the element and elemet.id*/}
+						{db && (
+							<CrudTable
+								data={db}
+								setDataToEdit={setDataToEdit}
+								deleteData={deleteData}
+							/>
+						)}
 					</Route>
 					<Route exact path="/agregar">
 						<h2>Agregar Santos</h2>
+						<CrudForm
+							createData={createData}
+							updateData={updateData}
+							dataToEdit={dataToEdit}
+							setDataToEdit={setDataToEdit}
+						/>
 					</Route>
 					<Route exact path="/editar/:id">
 						<h2>Editar santos</h2>
+						<CrudForm
+							createData={createData}
+							updateData={updateData}
+							dataToEdit={dataToEdit}
+							setDataToEdit={setDataToEdit}
+						/>
 					</Route>
 					<Route path="*" children={Error404} />
 				</Switch>
@@ -125,28 +154,6 @@ const CrudApi = () => {
 			<h2>CRUD API</h2>
 			<article className="grid-1-2">
 				{/* The crud form create and update the data */}
-				<CrudForm
-					createData={createData}
-					updateData={updateData}
-					dataToEdit={dataToEdit}
-					setDataToEdit={setDataToEdit}
-				/>
-				{loading && <Loader />}
-				{error && (
-					<Message
-						message={`Error ${error.status}: ${error.statusText}`}
-						backgroundColor="#dc3545"
-					/>
-				)}
-				{/* CrudApi default function is get the data and store it in the component Crudtable */}
-				{/* When they click on a button inside this component they call the two functions bellow  with the element and elemet.id*/}
-				{db && (
-					<CrudTable
-						data={db}
-						setDataToEdit={setDataToEdit}
-						deleteData={deleteData}
-					/>
-				)}
 			</article>
 		</div>
 	);

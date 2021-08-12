@@ -26,14 +26,19 @@
       "constellation": "Fenix"
     },
     {
-      "name": "Shura ",
-      "constellation": "Capricornio",
+      "name": "Afrodita",
+      "constellation": "Piscis",
       "id": 1626966630918
     },
     {
       "name": "Mü",
       "constellation": "Geminis",
       "id": 1626966639665
+    },
+    {
+      "name": "Camus",
+      "constellation": "Acuario",
+      "id": 1628777933287
     }
   ]
 }
