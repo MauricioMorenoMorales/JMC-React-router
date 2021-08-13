@@ -10,12 +10,16 @@ import Loader from './Loader';
 import SongDetails from './SongDetails';
 import SongForm from './SongForm';
 
+const mySongsInit = JSON.parse(localStorage.getItem('mySongs')) || [];
+
 const SongSearch = () => {
 	//States
-	const [search, setSearch] = useState(null);
-	const [lyric, setLyric] = useState(null);
-	const [bio, setBio] = useState(null);
-	const [loading, setLoading] = useState(false);
+	const [search, setSearch] = useState(null),
+		[lyric, setLyric] = useState(null),
+		[bio, setBio] = useState(null),
+		[loading, setLoading] = useState(false);
+
+	const [mySongs, setMySongs] = useState(mySongsInit);
 
 	//! El async await va dentro no fuera
 	useEffect(() => {
@@ -48,10 +52,18 @@ const SongSearch = () => {
 		};
 
 		fetchData();
-	}, [search]);
+		localStorage.setItem('mySongs', JSON.stringify(mySongs));
+	}, [search, mySongs]);
 
 	const handleSearch = data => {
 		setSearch(data);
+	};
+
+	const handleSaveSong = () => {
+		alert('salvando canción en Favoritos');
+	};
+	const handleDeleteSong = id => {
+		alert('salvando canción en Favoritos');
 	};
 
 	return (
@@ -65,7 +77,10 @@ const SongSearch = () => {
 				<article className="grid-1-3">
 					<Switch>
 						<Route exact path="/">
-							<SongForm handleSearch={handleSearch} />
+							<SongForm
+								handleSearch={handleSearch}
+								handleSaveSong={handleSaveSong}
+							/>
 							<h2>Tabla de canciones</h2>
 							<p>
 								Solamente funcionara buscando 2 bandas, no funciona la api de
