@@ -9,6 +9,7 @@ import Error404 from './Error404';
 import Loader from './Loader';
 import SongDetails from './SongDetails';
 import SongForm from './SongForm';
+import SongTable from './SongTable';
 
 const mySongsInit = JSON.parse(localStorage.getItem('mySongs')) || [];
 
@@ -23,6 +24,9 @@ const SongSearch = () => {
 
 	//! El async await va dentro no fuera
 	useEffect(() => {
+		/*Este useEffect está atento a que cuándo cambie el estado de search,
+		Usando la información dentro de search hace la petición y la guarda en sus
+		respectivos estados */
 		if (search === null) return;
 		console.log(search);
 		//Obtiene la información
@@ -56,6 +60,8 @@ const SongSearch = () => {
 	}, [search, mySongs]);
 
 	const handleSearch = data => {
+		/*Esta función se pasa dentro de el formulario como input, de el cual
+		data no es más que el valor de los inputs de el formulario  */
 		setSearch(data);
 	};
 
@@ -63,29 +69,34 @@ const SongSearch = () => {
 		alert('salvando canción en Favoritos');
 	};
 	const handleDeleteSong = id => {
-		alert('salvando canción en Favoritos');
+		alert(`Eliminando cancion con el id:${id}`);
 	};
 
 	return (
 		<div>
 			<HashRouter basename="canciones">
 				<header>
-					<h2>Probando esta wea</h2>
+					<h2>Buscador de canciones</h2>
 					<Link to="/">Home</Link>
 				</header>
 				{loading && <Loader />}
-				<article className="grid-1-3">
+				<article className="grid-1-2">
 					<Switch>
 						<Route exact path="/">
+							{/* Aqui se realizan las busquedas y por tanto se hacen cambios a estados */}
 							<SongForm
 								handleSearch={handleSearch}
 								handleSaveSong={handleSaveSong}
 							/>
-							<h2>Tabla de canciones</h2>
+							<SongTable
+								mySongs={mySongs}
+								handleDeleteSong={handleDeleteSong}
+							/>
 							<p>
 								Solamente funcionara buscando 2 bandas, no funciona la api de
 								lyric la cual es lo mismo, una banda
 							</p>
+							{/* Aqui se recibe la información de los estados */}
 							{search && !loading && (
 								<SongDetails search={search} bio={bio} lyric={lyric} />
 							)}
