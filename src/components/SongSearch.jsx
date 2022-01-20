@@ -18,9 +18,8 @@ const SongSearch = () => {
 	const [search, setSearch] = useState(null),
 		[lyric, setLyric] = useState(null),
 		[bio, setBio] = useState(null),
-		[loading, setLoading] = useState(false);
-
-	const [mySongs, setMySongs] = useState(mySongsInit);
+		[loading, setLoading] = useState(false),
+		[mySongs, setMySongs] = useState(mySongsInit);
 
 	//! El async await va dentro no fuera
 	useEffect(() => {
@@ -28,7 +27,7 @@ const SongSearch = () => {
 		Usando la información dentro de search hace la petición y la guarda en sus
 		respectivos estados */
 		if (search === null) return;
-		console.log(search);
+		// console.log(search);
 		//Obtiene la información
 		const fetchData = async function () {
 			const { artist, song } = search;
@@ -42,14 +41,14 @@ const SongSearch = () => {
 					' ',
 					'%20',
 				);
-			console.log(artistUrl, songUrl);
+			// console.log(artistUrl, songUrl);
 
 			setLoading(true);
 			const [artistResponse, songResponse] = await Promise.all([
 				helpHttp().get(artistUrl),
 				helpHttp().get(songUrl),
 			]);
-			console.log(artistResponse, '>>>>', songResponse);
+			// console.log(artistResponse, '>>>>', songResponse);
 			setBio(artistResponse);
 			setLyric(songResponse);
 			setLoading(false);
@@ -67,6 +66,13 @@ const SongSearch = () => {
 
 	const handleSaveSong = () => {
 		alert('salvando canción en Favoritos');
+		const currentSong = {
+			search,
+			lyric,
+			bio,
+		};
+		setMySongs(mySongs => [...mySongs, currentSong]);
+		setSearch(null);
 	};
 	const handleDeleteSong = id => {
 		alert(`Eliminando cancion con el id:${id}`);

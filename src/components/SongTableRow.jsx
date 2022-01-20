@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 const SongTableRow = ({ id, element, handleDeleteSong }) => {
+	const { bio, search } = element;
 	console.log(element);
 
 	const history = useHistory();
